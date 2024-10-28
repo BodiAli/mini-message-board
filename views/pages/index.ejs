@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+  <body>
+    <h1>This is the index page</h1>
+    <% messages.forEach((message) => { %>
+    <section>
+      <h2><%= message.user %></h2>
+      <p><%= message.text %></p>
+      <p><%= message.added %></p>
+    </section>
+    <% }) %>
+  </body>
+</html>
