@@ -15,4 +15,4 @@ function getIndexPage(req, res) {
   res.render("pages/index", { title: "Mini Message Board", messages });
 }
 
-module.exports = { getIndexPage };
+module.exports = { getIndexPage, messages };
