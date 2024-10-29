@@ -3,11 +3,12 @@
   <%- include("../partials/head") %>
   <body>
     <h1>This is the index page</h1>
+    <a href="/new">Send a new message!</a>
     <% messages.forEach((message) => { %>
     <section>
-      <h2><%= message.user %></h2>
-      <p><%= message.text %></p>
-      <p><%= message.added %></p>
+      <h2><span>User:</span> <%= message.user %></h2>
+      <p><span>Text:</span> <%= message.text %></p>
+      <p><span>Date Added:</span> <%= message.added %></p>
     </section>
     <% }) %>
   </body>
