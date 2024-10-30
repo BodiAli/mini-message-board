@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
-const newMessageRouter = require("./routes/formRouter");
+const formRouter = require("./routes/formRouter");
+const messageRouter = require("./routes/messageRouter");
 
 const app = express();
 
@@ -18,7 +19,12 @@ app.set("view engine", "ejs");
 
 // Routes
 app.use("/", indexRouter);
-app.use("/new", newMessageRouter);
+app.use("/new", formRouter);
+app.use("/message", messageRouter);
+
+app.use((req, res) => {
+  res.status(404).render("pages/404", { title: "404 Not Found" });
+});
 
 const PORT = process.env.PORT || 3000;
 
