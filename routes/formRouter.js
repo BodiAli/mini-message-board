@@ -1,18 +1,10 @@
 const { Router } = require("express");
-const { messages } = require("../controllers/indexController");
+const { createMessage, getFormPage, redirectToHomePage } = require("../controllers/formController");
 
-const newMessageRouter = Router();
+const formRouter = Router();
 
-newMessageRouter.get("/", (req, res) => {
-  res.render("pages/form");
-});
+formRouter.get("/", getFormPage);
 
-newMessageRouter.post("/", (req, res) => {
-  const { messageText, messageUser } = req.body;
+formRouter.post("/", createMessage, redirectToHomePage);
 
-  messages.push({ text: messageText, user: messageUser, added: new Date() });
-
-  res.redirect("/");
-});
-
-module.exports = newMessageRouter;
+module.exports = formRouter;
