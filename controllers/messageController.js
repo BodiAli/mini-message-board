@@ -16,6 +16,10 @@ function getMessagePage(req, res) {
 function deleteMessage(req, res) {
   const { messageId } = req.params;
   const messageToDeleteIndex = messages.findIndex((message) => message.id === messageId);
+  if (messageToDeleteIndex === -1) {
+    res.sendStatus(404);
+    return;
+  }
   messages.splice(messageToDeleteIndex, 1);
   res.sendStatus(204);
 }
