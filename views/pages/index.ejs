@@ -9,7 +9,34 @@
       <h2><span>User:</span> <%= message.user %></h2>
       <p><span>Text:</span> <%= message.text %></p>
       <p><span>Date Added:</span> <%= message.added %></p>
+      <a href="/message/<%= message.id %>">Open</a>
+      <button data-id="<%= message.id %>" class="delete">Delete</button>
     </section>
-    <% }) %>
+    <% }) %> <%- include("../partials/footer") %>
+
+    <script>
+      const deleteButtons = document.querySelectorAll(".delete");
+      deleteButtons.forEach((deleteButton) => {
+        deleteButton.addEventListener("click", async (e) => {
+          const endpoint = `/message/${e.target.dataset.id}`;
+
+          try {
+            const response = await fetch(endpoint, {
+              method: "DELETE",
+            });
+
+            console.log(response);
+            if (!response.ok) {
+              throw new Error("Message is not deleted");
+            }
+
+            window.location.reload();
+            return;
+          } catch (error) {
+            console.log(err);
+          }
+        });
+      });
+    </script>
   </body>
 </html>
