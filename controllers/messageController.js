@@ -10,7 +10,11 @@ function getMessagePage(req, res) {
   if (!messageToRender) {
     res.render("pages/message-404", { title: "Not Found", message: messageToRender });
   }
-  res.render("pages/message", { title: `${messageToRender.user}'s Message`, message: messageToRender });
+  res.render("pages/message", {
+    title: `${messageToRender.user}'s Message`,
+    message: messageToRender,
+    style: "message.css",
+  });
 }
 
 function deleteMessage(req, res) {
