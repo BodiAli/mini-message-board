@@ -2,45 +2,23 @@
 <html lang="en">
   <%- include("../partials/head") %>
   <body>
-    <h1>This is the index page</h1>
-    <a href="/new">Send a new message!</a>
-    <% messages.forEach((message) => { %>
-    <section>
-      <h2><span>User:</span> <%= message.user %></h2>
-      <p><span>Text:</span> <%= message.text %></p>
-      <p><span>Date Added:</span> <%= message.added %></p>
-      <a href="/message/<%= message.id %>">Open</a>
-      <button data-id="<%= message.id %>" class="delete">Delete</button>
-    </section>
-    <% }) %> <%- include("../partials/footer") %>
-
-    <script>
-      const deleteButtons = document.querySelectorAll(".delete");
-      deleteButtons.forEach((deleteButton) => {
-        deleteButton.addEventListener("click", async (e) => {
-          const endpoint = `/message/${e.target.dataset.id}`;
-
-          try {
-            const response = await fetch(endpoint, {
-              method: "DELETE",
-            });
-
-            if (!response.ok) {
-              throw new Error("An error occurred while trying to delete message");
-            }
-
-            window.location.reload();
-            return;
-          } catch (error) {
-            const paragraphElement = document.createElement("p");
-            paragraphElement.textContent = error.message;
-            deleteButton.parentElement.appendChild(paragraphElement);
-            setTimeout(() => {
-              paragraphElement.remove();
-            }, 5000);
-          }
-        });
-      });
-    </script>
+    <header>
+      <h1>Mini Message Board Web App</h1>
+      <p>An easy to use web app where you can view, create, and delete messages</p>
+    </header>
+    <main>
+      <div class="create-message">
+        <h2>Below are all created messages</h2>
+        <a href="/new">Create a new message!</a>
+      </div>
+      <% messages.forEach((message) => { %>
+      <section data-id="<%= message.id %>">
+        <%- include("../partials/user", {message}) %>
+        <button class="delete">Delete</button>
+      </section>
+      <% })%>
+    </main>
+    <%- include("../partials/footer") %>
+    <script src="/index.js"></script>
   </body>
 </html>
