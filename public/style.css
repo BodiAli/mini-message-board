@@ -1,4 +1,19 @@
 body {
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: "Georgia", "Times New Roman", "Merriwether", "Libre Baskerville", "Palatino Linotype",
+    "Book Antiqua", serif;
+}
+
+footer {
+  position: fixed;
+  right: 0;
+  left: 5px;
+  bottom: 5px;
+  display: flex;
+  gap: 10px;
 }
