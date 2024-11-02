@@ -8,6 +8,7 @@ sectionElements.forEach((section) => {
 
   const deleteButton = section.querySelector(".delete");
   deleteButton.addEventListener("click", async (e) => {
+    e.stopPropagation();
     const endpoint = `/message/${section.dataset.id}`;
 
     try {
@@ -20,7 +21,6 @@ sectionElements.forEach((section) => {
       }
 
       window.location.reload();
-      return;
     } catch (error) {
       const errorElement = document.createElement("p");
       errorElement.classList.add("error-message");
