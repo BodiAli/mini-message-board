@@ -8,7 +8,7 @@ function getMessagePage(req, res) {
   const { messageId } = req.params;
   const messageToRender = messages.find((message) => message.id === messageId);
   if (!messageToRender) {
-    res.render("pages/message-404", { title: "Not Found", message: messageToRender });
+    throw new Error("Message not found");
   }
   res.render("pages/message", {
     title: `${messageToRender.user}'s Message`,
