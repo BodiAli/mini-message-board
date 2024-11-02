@@ -3,6 +3,7 @@ const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
 const formRouter = require("./routes/formRouter");
 const messageRouter = require("./routes/messageRouter");
+const get404Page = require("./controllers/404Controller");
 
 const app = express();
 
@@ -22,9 +23,8 @@ app.use("/", indexRouter);
 app.use("/new", formRouter);
 app.use("/message", messageRouter);
 
-app.use((req, res) => {
-  res.status(404).render("pages/404", { title: "404 Not Found" });
-});
+// 404 page
+app.use(get404Page);
 
 const PORT = process.env.PORT || 3000;
 
