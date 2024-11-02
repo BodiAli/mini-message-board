@@ -1,0 +1,66 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0;
+}
+
+form {
+  padding: 2rem;
+  background-color: gainsboro;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+form path:first-child {
+  transition: fill ease 150ms;
+}
+
+form path:first-child:hover {
+  fill: red;
+}
+
+form > a {
+  width: 32px;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  cursor: pointer;
+}
+
+form > h2 {
+  font-size: 1.7rem;
+  margin-bottom: 3rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+label > span {
+  width: 50%;
+}
+
+textarea,
+input {
+  width: 70%;
+}
+
+input {
+  border-width: 1px;
+}
+
+label > textarea {
+  resize: none;
+}
+
+form > button {
+  font-size: 1rem;
+  align-self: center;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
