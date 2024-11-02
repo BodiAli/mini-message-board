@@ -2,16 +2,19 @@
 <html lang="en">
   <%- include("../partials/head") %>
   <body>
-    <header>
-      <h1>Mini Message Board Web App</h1>
-      <p>An easy to use web app where you can view, create, and delete messages</p>
-    </header>
-    <main>
+    <%- include("../partials/header") %>
+    <main class="<%= messages.length !== 0 ? 'grid' : '' %>">
       <div class="create-message">
         <h2>Below are all created messages</h2>
         <a href="/new">Create a new message!</a>
       </div>
-      <% messages.forEach((message) => { %>
+
+      <% if(messages.length === 0) { %>
+      <div class="no-messages">
+        <h3>No Messages To Display</h3>
+        <p>Try creating a new message!</p>
+      </div>
+      <% } %> <% messages.forEach((message) => { %>
       <section data-id="<%= message.id %>">
         <%- include("../partials/user", {message}) %>
         <button class="delete">Delete</button>
