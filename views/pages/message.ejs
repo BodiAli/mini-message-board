@@ -2,10 +2,17 @@
 <html lang="en">
   <%- include("../partials/head") %>
   <body>
-    <h1>Message Details!</h1>
-
-    <h2><%= message.user %></h2>
-    <p><%= message.text %></p>
-    <p><%= message.added %></p>
+    <%- include("../partials/header") %>
+    <main>
+      <div class="message-details">
+        <h2>Message Details</h2>
+        <a href="/">Home</a>
+      </div>
+      <%- include("../partials/user") %>
+      <div class="text">
+        <h4>Text:</h4>
+        <p><%= message.text %></p>
+      </div>
+    </main>
   </body>
 </html>
