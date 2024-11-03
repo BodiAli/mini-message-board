@@ -93,3 +93,14 @@ section:active {
   gap: 10px;
   font-size: 1.4rem;
 }
+
+@media (max-width: 500px) {
+  .create-message {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .user-details {
+    gap: 5px;
+  }
+}
