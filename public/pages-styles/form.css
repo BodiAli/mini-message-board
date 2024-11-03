@@ -64,3 +64,9 @@ form > button {
   padding: 0.3rem 0.6rem;
   cursor: pointer;
 }
+
+@media (max-width: 500px) {
+  form > h2 {
+    align-self: center;
+  }
+}
