@@ -1,3 +1,5 @@
+const crypto = require("node:crypto");
+
 const messages = [
   {
     id: crypto.randomUUID(),
