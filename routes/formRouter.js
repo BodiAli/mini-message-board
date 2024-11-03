@@ -1,10 +1,10 @@
 const { Router } = require("express");
-const { createMessage, getFormPage, redirectToHomePage } = require("../controllers/formController");
+const { createMessage, getFormPage } = require("../controllers/formController");
 
 const formRouter = Router();
 
 formRouter.get("/", getFormPage);
 
-formRouter.post("/", createMessage, redirectToHomePage);
+formRouter.post("/", createMessage);
 
 module.exports = formRouter;
