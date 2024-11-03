@@ -28,7 +28,9 @@ app.use(get404Page);
 
 // Error Handler
 app.use((err, req, res, _next) => {
-  res.status(407).render("pages/message-404", {
+  console.log(err);
+
+  res.status(404).render("pages/message-404", {
     title: "Message Not Found",
     style: "message-404.css",
   });
