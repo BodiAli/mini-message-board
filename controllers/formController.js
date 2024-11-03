@@ -7,7 +7,7 @@ function getFormPage(req, res) {
 function createMessage(req, res) {
   const { messageText, messageUser } = req.body;
   messages.push({ text: messageText, user: messageUser, added: new Date(), id: crypto.randomUUID() });
-  res.redirect("/");
+  res.status(201).redirect("/");
 }
 
 module.exports = { createMessage, getFormPage };
