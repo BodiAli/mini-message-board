@@ -1,12 +1,14 @@
-const { messages } = require("./indexController");
+const asyncHandler = require("express-async-handler");
+const db = require("../db/queries");
 
 function redirectToHomePage(req, res) {
   res.redirect("/");
 }
 
-function getMessagePage(req, res) {
+const getMessagePage = asyncHandler(async (req, res) => {
   const { messageId } = req.params;
-  const messageToRender = messages.find((message) => message.id === messageId);
+  const [messageToRender] = await db.getMessage(messageId);
+
   if (!messageToRender) {
     throw new Error("Message not found");
   }
@@ -15,17 +17,12 @@ function getMessagePage(req, res) {
     message: messageToRender,
     style: "message.css",
   });
-}
+});
 
-function deleteMessage(req, res) {
+const deleteMessage = asyncHandler(async (req, res) => {
   const { messageId } = req.params;
-  const messageToDeleteIndex = messages.findIndex((message) => message.id === messageId);
-  if (messageToDeleteIndex === -1) {
-    res.sendStatus(404);
-    return;
-  }
-  messages.splice(messageToDeleteIndex, 1);
+  await db.deleteMessage(messageId);
   res.sendStatus(204);
-}
+});
 
 module.exports = { redirectToHomePage, getMessagePage, deleteMessage };
