@@ -7,6 +7,7 @@ main {
 
 form {
   padding: 2rem;
+  padding-bottom: 4rem;
   background-color: gainsboro;
   border-radius: 5px;
   display: flex;
@@ -23,7 +24,14 @@ form path:first-child:hover {
   fill: red;
 }
 
-form > a {
+form > button:first-child {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+form > a,
+form > button:first-child {
   width: 32px;
   position: absolute;
   right: 7px;
@@ -63,6 +71,12 @@ form > button {
   align-self: center;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
+}
+
+.error-message {
+  position: absolute;
+  bottom: 10px;
+  color: crimson;
 }
 
 @media (max-width: 500px) {
