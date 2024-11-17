@@ -1,34 +1,9 @@
-const crypto = require("node:crypto");
+const asyncHandler = require("express-async-handler");
+const db = require("../db/queries");
 
-const messages = [
-  {
-    id: crypto.randomUUID(),
-    user: "Amando",
-    text: "Hi there!",
-    added: new Date(),
-  },
-  {
-    id: crypto.randomUUID(),
-    user: "Charles",
-    text: "Hello World!",
-    added: new Date(),
-  },
-  {
-    id: crypto.randomUUID(),
-    user: "Jack",
-    text: "Hey!",
-    added: new Date(),
-  },
-  {
-    id: crypto.randomUUID(),
-    user: "Rue",
-    text: "Hi everyone!",
-    added: new Date(),
-  },
-];
-
-function getIndexPage(req, res) {
+const getIndexPage = asyncHandler(async (req, res) => {
+  const messages = await db.getAllMessages();
   res.render("pages/index", { title: "Mini Message Board", messages, style: "index.css" });
-}
+});
 
-module.exports = { getIndexPage, messages };
+module.exports = { getIndexPage };
