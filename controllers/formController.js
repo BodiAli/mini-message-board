@@ -1,15 +1,15 @@
-const crypto = require("node:crypto");
-const { messages } = require("./indexController");
+const asyncHandler = require("express-async-handler");
+const db = require("../db/queries");
 
 function getFormPage(req, res) {
   res.render("pages/form", { title: "New Message", style: "form.css" });
 }
 
-function createMessage(req, res, next) {
+const createMessage = asyncHandler(async (req, res, next) => {
   const { messageText, messageUser } = req.body;
-  messages.push({ text: messageText, user: messageUser, added: new Date(), id: crypto.randomUUID() });
+  await db.createNewMessage(messageUser, messageText);
   next();
-}
+});
 
 function redirectToHomePage(req, res) {
   res.redirect("/");
