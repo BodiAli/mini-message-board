@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
@@ -28,6 +29,8 @@ app.use(get404Page);
 
 // Error Handler
 app.use((err, req, res, _next) => {
+  console.error(err);
+
   res.status(404).render("pages/message-404", {
     title: "Message Not Found",
     style: "message-404.css",
