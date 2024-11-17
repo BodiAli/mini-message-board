@@ -17,7 +17,7 @@ sectionElements.forEach((section) => {
       });
 
       if (!response.ok) {
-        throw new Error("An error occurred while trying to delete message");
+        throw new Error("An error occurred while trying to delete this message");
       }
 
       window.location.reload();
