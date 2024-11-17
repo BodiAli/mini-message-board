@@ -10,6 +10,7 @@ const app = express();
 
 // App level middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Static Assets
 const assetsPath = path.join(__dirname, "public");
