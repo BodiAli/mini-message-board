@@ -18,9 +18,18 @@ async function deleteMessage(id) {
   await pool.query("DELETE FROM messages WHERE id = $1", [id]);
 }
 
+async function updateMessage(id, messageUser, messageText) {
+  await pool.query('UPDATE messages SET "user" = $2, text = $3 WHERE id = $1', [
+    id,
+    messageUser,
+    messageText,
+  ]);
+}
+
 module.exports = {
   getAllMessages,
   createNewMessage,
   getMessage,
   deleteMessage,
+  updateMessage,
 };
