@@ -11,6 +11,12 @@
   font-size: 1.5rem;
 }
 
+.message-details > a:first-of-type {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .message-details > a {
   text-decoration: none;
   color: #000;
