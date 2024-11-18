@@ -1,6 +1,9 @@
+require("./instrument");
 require("dotenv").config();
 const express = require("express");
 const path = require("node:path");
+const Sentry = require("@sentry/node");
+
 const indexRouter = require("./routes/indexRouter");
 const formRouter = require("./routes/formRouter");
 const messageRouter = require("./routes/messageRouter");
@@ -27,6 +30,8 @@ app.use("/message", messageRouter);
 
 // 404 page
 app.use(get404Page);
+
+Sentry.setupExpressErrorHandler(app);
 
 // Error Handler
 app.use((err, req, res, _next) => {
